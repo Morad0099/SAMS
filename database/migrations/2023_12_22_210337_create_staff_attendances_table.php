@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('staff_attendances', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->enum('role', ['HOD', 'staff', 'student'])->default('student');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger("staff_id");
+            $table->date("attendance_date");
+            $table->enum("Status", ['present', 'absent', 'late']);
             $table->timestamps();
+            $table->foreign("staff_id")->references('id')->on("staff")->onDelete("cascade");
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('staff_attendances');
     }
 };
