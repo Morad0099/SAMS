@@ -15,7 +15,7 @@ use App\Http\Controllers\Error\ErrorPage;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin_dashboard');
 });
 
 
