@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         staff::factory(10)->create();
-        // staff_attendance::factory(10)->create();
+        staff_attendance::factory(10)->create();
 
 
       
 
-        staff_attendance::factory()->create([
-            'staff_id'=> fake()->randomElement(['1', '2', '3', '4','5', '6', '7', '8', '9', '10']),
-            'attendance_date' => fake()->date(),
-            'status' => fake()->randomElement(['present', 'absent', 'late']),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // staff_attendance::factory()->create([
+        //     'staff_id'=> fake()->randomElement(['1', '2', '3', '4','5', '6', '7', '8', '9', '10']),
+        //     'attendance_date' => fake()->date(),
+        //     'status' => fake()->randomElement(['present', 'absent', 'late']),
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
     }
 }
