@@ -19,11 +19,15 @@ class DatabaseSeeder extends Seeder
         staff::factory(10)->create();
         // staff_attendance::factory(10)->create();
 
+
       
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        staff_attendance::factory()->create([
+            'staff_id'=> fake()->randomElement(['1', '2', '3', '4','5', '6', '7', '8', '9', '10']),
+            'attendance_date' => fake()->date(),
+            'status' => fake()->randomElement(['present', 'absent', 'late']),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Staff;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,9 +19,7 @@ class StaffAttendanceFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'staff_id' => function () {
-            //     return factory(Staff::class)->create()->id;
-            // },
+            'staff_id'=> fake()->randomElement(['1', '2', '3', '4','5', '6', '7', '8', '9', '10']),
             'attendance_date' => fake()->date(),
             'status' => fake()->randomElement(['present', 'absent', 'late']),
             'created_at' => now(),
