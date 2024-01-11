@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HOD
+class Staff
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class HOD
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role == "HOD") {
+        if (auth()->user()->role == "staff") {
             return $next($request);
         }else {
             return redirect()->route('error');
