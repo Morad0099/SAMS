@@ -17,7 +17,7 @@
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3">
-                @include('includes.sidebar')
+                @include('includes.staff_sidebar')
             </div>
             <!-- Content -->
             <div class="col-md-9">
