@@ -12,7 +12,7 @@ class attendance_job extends Controller
         $staff = staff::all();
         foreach ($staff as $key => $value) 
         {
-            return date('l');
+            
         }  
     }
 }
