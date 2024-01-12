@@ -8,6 +8,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Redirect;
 
 
 class auths extends Controller
@@ -39,20 +40,23 @@ class auths extends Controller
 
 
     public function login(Request $request){
-        $record = $request->validate([
+        $credentials = $request->validate([
             'staff_id' => 'required|string',
             'password' => 'required|string',
             
         ]);
 
-        $attempt = Auth::guard('web')->attempt($record);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('dashboard');
+        }
+ 
+        return back()->withErrors([
+            'password' => 'The provided credentials do not match our records.',
+        ])->onlyInput('password');
 
-        if ($attempt) 
-        {
-            return redirect()->route('dashboard');
-        }else {
-            return 'hi';
-        }   
+          
     }
 
     public function logout(Request $request)

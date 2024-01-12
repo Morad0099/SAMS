@@ -4,6 +4,7 @@
 use App\Http\Controllers\auths;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\attendance_job;
 use App\Http\Controllers\Error\ErrorPage;
 use App\Http\Controllers\StaffController;
 
@@ -58,3 +59,6 @@ Route::get('/staff/announcemet', [StaffController::class, 'staff_announcement'])
 
 
 Route::get('/error', [ErrorPage::class, 'index'])->name('error');
+
+
+Route::get('/test', [attendance_job::class, 'jobOne'])->name('jobOne');
