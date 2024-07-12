@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 {{-- <div class="card mt-4"> --}}
                 <nav class="navbar navbar-expand-lg navbar-light"
-                    style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+                    style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
                     <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">ANNOUNCEMENT MANAGEMENT</h4>
                 </nav>
                 <div class="card-body">
@@ -22,7 +22,7 @@
                             <label for="announcementContent">Content</label>
                             <textarea class="form-control" name="content" id="announcementContent" rows="3" required></textarea>
                         </div>
-                        <button type="button" class="btn text-white" style="background: #2D5A27"
+                        <button type="button" class="btn text-white" style="background: #C78C06"
                             onclick="submitAnnouncement()">Submit Announcement</button>
                     </form><br>
 
@@ -93,7 +93,7 @@
             text: "Or click cancel to abort!",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#2D5A27',
+            confirmButtonColor: '#C78C06',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Submit'
         }).then((result) => {

@@ -81,7 +81,7 @@
         }
 
         #sidebar ul li a:hover {
-            background-color: #2D5A27;
+            background-color: #C78C06;
             /* Hover color */
         }
 
@@ -97,7 +97,7 @@
         }
 
         #sidebar ul li.active a {
-            background-color: #2D5A27;
+            background-color: #C78C06;
             /* Set the background color for the active tab */
             color: #fff !important;
             /* Set text color for the active tab */
@@ -117,7 +117,7 @@
         }
 
         .dropdown-menu .dropdown-item:hover {
-            background-color: #2D5A27;
+            background-color: #C78C06;
         }
 
         .modal {
@@ -141,11 +141,11 @@
             vertical-align: middle;
             cursor: pointer;
             background-image: none;
-            border: 1px solid #2D5A27;
+            border: 1px solid #C78C06;
             border-radius: 4px;
             color: #fff;
-            background-color: #2D5A27;
-            border-color: #2D5A27;
+            background-color: #C78C06;
+            border-color: #C78C06;
         }
     </style>
 

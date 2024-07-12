@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid" style="margin-left:-80px">
         <nav class="navbar navbar-expand-lg navbar-light"
-            style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+            style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
             <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">CLOCK IN FOR ATTENDANCE</h4>
         </nav>
 
@@ -38,7 +38,7 @@
 
                             <div class="mt-4">
                                 <button type="button" onclick="submitClockinForm()" class="btn text-white"
-                                    style="background: #2D5A27">Clock In</button>
+                                    style="background: #C78C06">Clock In</button>
                                 {{-- <button type="button" class="btn btn-warning ml-2" onclick="clockOut()">Clock Out</button> --}}
                             </div>
                         </form>

@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-lg-12 col-12 p-0 fixed-top py-3"
-    style="background: linear-gradient(to right, #1e2a3a, #B2BEB5);">
+    style="background: linear-gradient(to right, #000080, #000080);">
     <button class="navbar text-white px-5" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="sidebarCollapse"
-        style="background: #2D5A27">
+        style="background: #C78C06">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container d-flex justify-content-between">
         <a class="navbar-brand ml-auto" href="#">
-            <img src="{{ asset('images/logo.jpeg') }}" alt="School Logo"
+            <img src="{{ asset('images/ATU(1).jpeg') }}" alt="School Logo"
                 style="width: 120px; height: 100px; margin-right: 10px;">
-            <h4 class="mb-0" style="color: #ffff; font-weight: bold; display: inline-block;">KADE TECHNICAL SHS</h4>
+            <h4 class="mb-0" style="color: #ffff; font-weight: bold; display: inline-block;">ACCRA TECHNICAL UNIVERSITY</h4>
         </a>
 
         <div class="ml-auto">
             <div class="d-flex ml-auto">
                 <!-- Card for displaying today's date in a specific timezone -->
-                <div class="card text-white ml-2" style="background: #2D5A27">
+                <div class="card text-white ml-2" style="background: #C78C06">
                     <div class="card-body">
                         @php
                             // Set the desired timezone
@@ -28,7 +28,7 @@
                 </div>
 
                 <!-- Card for displaying current time in a specific timezone (e.g., 'America/New_York') -->
-                <div class="card text-white ml-2" style="background: #2D5A27">
+                <div class="card text-white ml-2" style="background: #C78C06">
                     <div class="card-body">
                         @php
                             // Set the desired timezone
@@ -46,7 +46,7 @@
             <!-- Add this button inside your navigation bar -->
 
         </div>
-        <div class="card text-white ml-auto" style="background: #2D5A27">
+        <div class="card text-white ml-auto" style="background: #C78C06">
             <div class="card-body p-2">
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button"

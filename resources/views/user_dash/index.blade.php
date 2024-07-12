@@ -4,7 +4,7 @@
     <div class="container-fluid" style="margin-left:-80px">
 
         <nav class="navbar navbar-expand-lg navbar-light"
-            style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+            style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
             <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">WELCOME TO THE STAFF ATTENDANCE
                 MANAGEMENT SYSTEM</h4>
         </nav>
@@ -65,7 +65,7 @@
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">Leave Request</h5>
                     <p class="card-text">View detailed information about your leave requests</p>
-                    <a href="/staff/leave" class="btn text-white" style="background: #2D5A27">Go to Leave Management</a>
+                    <a href="/staff/leave" class="btn text-white" style="background: #C78C06">Go to Leave Management</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <div class="card-body" style="height: 180px">
                     <h5 class="card-title font-weight-bold">Clock-In/Out</h5>
                     <p class="card-text">Manually clock in or out for attendance tracking.</p>
-                    <a href="/staff/clockin" class="btn text-white" style="background: #2D5A27; margin-top: 25px">Clock In/Out</a>
+                    <a href="/staff/clockin" class="btn text-white" style="background: #C78C06; margin-top: 25px">Clock In/Out</a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">Attendance Trends</h5>
                     <p class="card-text">Explore graphical representations of attendance trends.</p>
-                    <a href="/staff/attendance" class="btn text-white" style="background: #2D5A27">View Trends</a>
+                    <a href="/staff/attendance" class="btn text-white" style="background: #C78C06">View Trends</a>
                 </div>
             </div>
         </div>

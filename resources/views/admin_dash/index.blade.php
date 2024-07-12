@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container" style="margin-left:-80px">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
         <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">WELCOME TO THE STAFF ATTENDANCE MANAGEMENT SYSTEM</h4>
     </nav>
 

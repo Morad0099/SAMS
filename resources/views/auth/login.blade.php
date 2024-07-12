@@ -7,7 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, #fff, #2D5A27);
+            background: linear-gradient(to right, #000080, #C78C06);
             color: #000000;
         }
         .container {
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="logo-container">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('images/logo.jpeg') }}" alt="School Logo" class="logo">
+            <img src="{{ asset('images/ATU(1).jpeg') }}" alt="School Logo" class="logo">
         </a>
     </div>
     <h4 class="text-center mb-4 font-weight-bold" style="font-family: sans-serif">WELCOME TO THE STAFF ATTENDANCE MANAGEMENT SYSTEM</h4>
@@ -82,7 +82,7 @@
                                 <label class="form-check-label" for="remember">Remember Me</label>
                             </div>
 
-                            <button type="submit" class="btn btn-block text-white" style="background: #2D5A27">Login</button>
+                            <button type="submit" class="btn btn-block text-white" style="background: #000080">Login</button>
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="">Forgot Your Password?</a>
                             @endif
@@ -139,7 +139,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
 
-                            <button type="submit" class="btn btn-block text-white" style="background: #2D5A27">Register</button>
+                            <button type="submit" class="btn btn-block text-white" style="background: #000080">Register</button>
                         </form>
                     </div>
                 </div>
