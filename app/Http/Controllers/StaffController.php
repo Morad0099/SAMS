@@ -26,9 +26,10 @@ class StaffController extends Controller
     }
 
     public function staff_leave(){
-        $leaves = DB::table('leave_management')->select('*', 'users.staff_id')
-        ->join('users', 'leave_management.staff_id', 'users.staff_id')
-        ->where('users.staff_id', Auth::user()->staff_id)
+        $leaves = DB::table('leave_management')
+        // ->select('*', 'users.staff_id')
+        // ->join('users', 'leave_management.staff_id', 'users.staff_id')
+        // ->where('users.staff_id', Auth::user()->staff_id)
         ->where('leave_management.deleted', 0)
         ->get();
 

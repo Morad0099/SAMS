@@ -39,7 +39,7 @@
                                             <td>
                                                 <!-- Delete Button -->
                                                 <button class='btn btn-sm btn-outline-danger rounded delete-req-btn'
-                                                    onclick="deleteLeaveRequest('{{ $leave->staff_id }}')">
+                                                    onclick="deleteLeaveRequest('{{ $leave->id }}')">
                                                     <i class='fas fa-trash'></i>
                                                 </button>
 

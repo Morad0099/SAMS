@@ -66,6 +66,7 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
+                                                    {{-- <th>ID</th> --}}
                                                     <th>Staff Name</th>
                                                     <th>Leave Type</th>
                                                     <th>Start Date</th>
@@ -76,8 +77,8 @@
                                             <tbody>
                                                 <!-- Loop through pending leave requests and display them in the table -->
                                                 @foreach ($items as $item)
-                                                    <tr>
-                                                        <td>{{ $item->name }}</td>
+                                                <tr data-id="{{ $item->id }}">
+                                                    <td>{{ $item->name }}</td>
                                                         <td>{{ $item->reason }}</td>
                                                         <td>{{ $item->start_date }}</td>
                                                         <td>{{ $item->end_date }}</td>
@@ -160,6 +161,95 @@
                 }
             });
         });
+
+        $(document).ready(function () {
+    // Approve Button
+    $('.btn-outline-success').on('click', function (e) {
+        e.preventDefault(); // Prevent the default action
+        var leaveId = $(this).closest('tr').data('id'); // Get the leave ID from the row
+
+        // SweetAlert confirmation for approval
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to approve this leave request?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Approve it!'
+        }).then((result) => {
+            if (result) {
+                // AJAX request to approve the leave
+                $.ajax({
+                    url: `/api/approve_leave/${leaveId}`,
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                    },
+                    success: function (response) {
+                        Swal.fire(
+                            'Approved!',
+                            'The leave request has been approved.',
+                            'success'
+                        );
+                        // Optionally, refresh the page or update the table
+                    },
+                    error: function (xhr) {
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem approving the leave request.',
+                            'error'
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Reject Button
+    $('.btn-outline-danger').on('click', function (e) {
+        e.preventDefault(); // Prevent the default action
+        var leaveId = $(this).closest('tr').data('id'); // Get the leave ID from the row
+
+        // SweetAlert confirmation for rejection
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to reject this leave request?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#28a745',
+            confirmButtonText: 'Yes, Reject it!'
+        }).then((result) => {
+            if (result) {
+                // AJAX request to reject the leave
+                $.ajax({
+                    url: `/api/reject_leave/${leaveId}`,
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                    },
+                    success: function (response) {
+                        Swal.fire(
+                            'Rejected!',
+                            'The leave request has been rejected.',
+                            'success'
+                        );
+                        // Optionally, refresh the page or update the table
+                    },
+                    error: function (xhr) {
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem rejecting the leave request.',
+                            'error'
+                        );
+                    }
+                });
+            }
+        });
+    });
+});
+
     </script>
     
 @endsection

@@ -37,8 +37,9 @@ class AdminController extends Controller
 
     public function admin_attendance(){
         $items = DB::table('leave_management')
-        ->select('*', 'users.name')
+        ->select('*', 'users.name', 'leave_management.id')
         ->join('users', 'leave_management.staff_id', 'users.staff_id')
+        ->where('leave_management.status', 'pending')
         ->where('leave_management.deleted', 0)
         ->get();
         $clockinstatus = DB::table('staff_attendances')
@@ -85,4 +86,5 @@ class AdminController extends Controller
 
         return response()->json($attendanceData);
     }
+    
 }

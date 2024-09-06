@@ -54,8 +54,9 @@
                         {{Auth::user()->role}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#"><i class="fas fa-user text-primary"></i> Profile</a>
-                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#passwordResetModal">
+                            <i class="fas fa-key text-primary"></i> Password Reset
+                        </a>                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href=""
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="fas fa-sign-out-alt text-primary"></i> Logout</a>
@@ -67,4 +68,7 @@
             </div>
         </div>
     </div>
+    @include('password.index')
 </nav>
+
+

@@ -24,9 +24,9 @@
                         <!-- Attendance Records Table -->
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="font-weight-bold">Attendance Records</h5>
-                            <button class="btn text-white" style="background: #C78C06" data-toggle="modal"
+                            {{-- <button class="btn text-white" style="background: #C78C06" data-toggle="modal"
                                     data-target="#announcementFilterModal"><i class="fas fa-filter"></i> Filter
-                            </button>
+                            </button> --}}
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">

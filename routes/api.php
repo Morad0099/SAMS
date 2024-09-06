@@ -32,6 +32,10 @@ Route::post('/edit_announcement', [AdminAPIController::class, 'edit_announcement
 
 Route::post('/delete_announcement/{id}', [AdminAPIController::class, 'delete_announcement'])->name('delete_announcement');
 
+Route::post('/approve_leave/{id}', [AdminAPIController::class, 'approve_leaveRequest']);
+
+Route::post('/reject_leave/{id}', [AdminAPIController::class, 'reject_leaveRequest']);
+
 //staff api routes
 Route::post('/add_leave_request', [StaffAPIController::class, 'add_leave_request']);
 

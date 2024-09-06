@@ -193,4 +193,24 @@ class AdminAPIController extends Controller
             'msg' => 'Announcement deleted successfully'
         ]);
     }
+
+    public function approve_leaveRequest($id){
+        DB::table('leave_management')->where('id', $id)
+        ->update(['status' => 'approved']);
+
+        return response()->json([
+            'ok' => true,
+            'msg' => 'Leave request approved successfully'
+        ]);
+    }
+
+    public function reject_leaveRequest($id){
+        DB::table('leave_management')->where('id', $id)
+        ->update(['status' => 'rejected']);
+
+        return response()->json([
+            'ok' => true,
+            'msg' => 'Leave request approved successfully'
+        ]);
+    }
 }

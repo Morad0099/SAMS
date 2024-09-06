@@ -30,7 +30,7 @@
                                             data-target="#filterModal">
                                             <i class="fas fa-filter"></i> Filter
                                         </button>
-                                        <form id="excelForm" enctype="multipart/form-data">
+                                        {{-- <form id="excelForm" enctype="multipart/form-data">
                                             <label for="excelFile" class="custom-excel-btn">
                                                 <i class="far fa-file-excel"></i> Import Excel
                                             </label>
@@ -38,7 +38,7 @@
                                             <button type="button" class="btn btn-success"
                                                 style="height: 35px; margin-top: -8px"
                                                 onclick="uploadExcel()">Upload</button>
-                                        </form>
+                                        </form> --}}
                                         {{-- </div> --}}
                                     </div>
                                 </div>
