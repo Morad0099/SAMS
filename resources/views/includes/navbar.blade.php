@@ -9,7 +9,8 @@
         <a class="navbar-brand ml-auto" href="#">
             <img src="{{ asset('images/ATU(1).jpeg') }}" alt="School Logo"
                 style="width: 120px; height: 100px; margin-right: 10px;">
-            <h4 class="mb-0" style="color: #ffff; font-weight: bold; display: inline-block;">ACCRA TECHNICAL UNIVERSITY</h4>
+            <h4 class="mb-0" style="color: #ffff; font-weight: bold; display: inline-block;">ACCRA TECHNICAL
+                UNIVERSITY</h4>
         </a>
 
         <div class="ml-auto">
@@ -21,7 +22,7 @@
                             // Set the desired timezone
                             $timezone = 'America/New_York';
                             // Display today's date in the specified timezone
-                            $todayDate = now()->timezone($timezone)->format('l, F j, Y');
+$todayDate = now()->timezone($timezone)->format('l, F j, Y');
                         @endphp
                         <h6 class="mb-0">Today: {{ $todayDate }}</h6>
                     </div>
@@ -34,9 +35,7 @@
                             // Set the desired timezone
                             $timezone = 'America/New_York';
                             // Display the current time in the specified timezone
-                            $currentTime = now()
-                                ->timezone($timezone)
-                                ->format('h:i A');
+                            $currentTime = now()->timezone($timezone)->format('h:i A');
                         @endphp
                         <h6 class="mb-0">Time: {{ $currentTime }}</h6>
                     </div>
@@ -51,16 +50,19 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{Auth::user()->role}}
+                        {{ Auth::user()->role }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#passwordResetModal">
-                            <i class="fas fa-key text-primary"></i> Password Reset
-                        </a>                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#password-modal"
+                            style="cursor: pointer;">
+                            <i class="fa fa-lock text-primary"></i>
+                            Change Password
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href=""
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="fas fa-sign-out-alt text-primary"></i> Logout</a>
-                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>
@@ -68,7 +70,5 @@
             </div>
         </div>
     </div>
-    @include('password.index')
 </nav>
-
-
+@include('password.index')

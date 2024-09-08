@@ -43,6 +43,7 @@ Route::post('/delete_leave_request/{id}', [StaffAPIController::class, 'delete_le
 
 Route::post('/clockin', [StaffAPIController::class, 'clockin'])->name('clockin_attendance');
 
+Route::put('/reset_password', [AdminAPIController::class, 'updatePassword']);
 // Route::get('/getAttendanceData', [StaffAPIController::class, 'getAttendanceData'])->name('getAttendanceData');
 
 
