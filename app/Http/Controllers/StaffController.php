@@ -32,6 +32,7 @@ class StaffController extends Controller
         ->where('staff_id', Auth::user()->staff_id)
         ->where('leave_management.deleted', 0)
         ->get();
+        
 
         $totalLeaveCounts = DB::table('leave_management')
         ->where('staff_id', Auth::user()->staff_id)
