@@ -17,7 +17,7 @@
                         <div class="mb-4 font-weight-bold">
                             <h5 class="font-weight-bold">Leave Summary</h5>
                             <p>Pending Leave Requests: <span class="text-danger">{{ $totalLeaveCounts }}</span></p>
-                            <p>Approved Leave Requests: <span class="text-success"></span> </p>
+                            <p>Approved Leave Requests: <span class="text-success">{{ $approved }}</span> </p>
                         </div>
 
                         <!-- Leave Requests Table -->

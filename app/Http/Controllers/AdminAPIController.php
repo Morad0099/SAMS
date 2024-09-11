@@ -46,6 +46,14 @@ class AdminAPIController extends Controller
                 'class' => null
             ]);
 
+            DB::table('users')->insert([
+                'name' => $request->name,
+                'email' => $request->email,
+                'staff_id' => $request->id,
+                'role' => 'staff',
+                'password' => Hash::make($request->email)
+            ]);
+
             return response()->json([
                 'ok' => true,
                 'msg' => 'Staff added successfully'
