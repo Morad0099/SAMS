@@ -6,7 +6,7 @@
         <div class="col-md-12">
             {{-- <div class="card"> --}}
             <nav class="navbar navbar-expand-lg navbar-light"
-                style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+                style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
                 <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">STAFF MANAGEMENT</h4>
             </nav>
             <div class="card-body">
@@ -26,11 +26,11 @@
                                             data-toggle="modal" data-target="#addStaffModal">Add
                                             Staff</button>
                                         <button class="btn text-white"
-                                            style="background: #2D5A27; left: -10px; height: 35px" data-toggle="modal"
+                                            style="background: #C78C06; left: -10px; height: 35px" data-toggle="modal"
                                             data-target="#filterModal">
                                             <i class="fas fa-filter"></i> Filter
                                         </button>
-                                        <form id="excelForm" enctype="multipart/form-data">
+                                        {{-- <form id="excelForm" enctype="multipart/form-data">
                                             <label for="excelFile" class="custom-excel-btn">
                                                 <i class="far fa-file-excel"></i> Import Excel
                                             </label>
@@ -38,7 +38,7 @@
                                             <button type="button" class="btn btn-success"
                                                 style="height: 35px; margin-top: -8px"
                                                 onclick="uploadExcel()">Upload</button>
-                                        </form>
+                                        </form> --}}
                                         {{-- </div> --}}
                                     </div>
                                 </div>

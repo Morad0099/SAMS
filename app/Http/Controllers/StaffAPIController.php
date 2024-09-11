@@ -56,7 +56,7 @@ class StaffAPIController extends Controller
     }
 
     public function delete_leave_request($id){
-        DB::table('leave_management')->where('staff_id', $id)
+        DB::table('leave_management')->where('id', $id)
         ->update(['deleted' => 1]);
 
         return response()->json([
@@ -66,7 +66,7 @@ class StaffAPIController extends Controller
     }
 
     public function clockin(Request $request)
-{
+    {
     $validator = Validator::make(
         $request->all(), [
             'date' => 'required|date',

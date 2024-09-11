@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid" style="margin-left:-80px">
         <nav class="navbar navbar-expand-lg navbar-light"
-             style="background-color: #f8f9fa; border-bottom: 5px solid #2D5A27; margin-bottom: 10px;">
+             style="background-color: #f8f9fa; border-bottom: 5px solid #C78C06; margin-bottom: 10px;">
             <h4 style="font-weight: bold; color: #343a40; margin: 0; padding: 10px;">ATTENDANCE</h4>
         </nav>
 
@@ -24,9 +24,9 @@
                         <!-- Attendance Records Table -->
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="font-weight-bold">Attendance Records</h5>
-                            <button class="btn text-white" style="background: #2D5A27" data-toggle="modal"
+                            {{-- <button class="btn text-white" style="background: #C78C06" data-toggle="modal"
                                     data-target="#announcementFilterModal"><i class="fas fa-filter"></i> Filter
-                            </button>
+                            </button> --}}
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">

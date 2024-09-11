@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
+
 
 class AdminAPIController extends Controller
 {
-    public function add_staff(Request $request){
+    public function add_staff(Request $request)
+    {
         $validator = Validator::make(
-            $request->all(),[
+            $request->all(),
+            [
                 'name' => 'required',
                 'id' => 'required|unique:staff,employee_id',
                 'email' => 'required|unique:staff,email',
@@ -25,7 +31,7 @@ class AdminAPIController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'ok' => false,
-                'msg' => 'Adding staff failed.'. join(' ', $validator->errors()->all())
+                'msg' => 'Adding staff failed.' . join(' ', $validator->errors()->all())
             ]);
         }
 
@@ -40,12 +46,20 @@ class AdminAPIController extends Controller
                 'class' => null
             ]);
 
+            DB::table('users')->insert([
+                'name' => $request->name,
+                'email' => $request->email,
+                'staff_id' => $request->id,
+                'role' => 'staff',
+                'password' => Hash::make($request->email)
+            ]);
+
             return response()->json([
                 'ok' => true,
                 'msg' => 'Staff added successfully'
             ]);
         } catch (Exception $e) {
-            Log::error('Adding staff failed: '. $e->getMessage());
+            Log::error('Adding staff failed: ' . $e->getMessage());
             return response()->json([
                 'ok' => false,
                 'msg' => 'Adding staff failed. An internal error occured. If this continues, please contact an administrator',
@@ -57,9 +71,11 @@ class AdminAPIController extends Controller
         }
     }
 
-    public function edit_staff(Request $request){
+    public function edit_staff(Request $request)
+    {
         $validator = Validator::make(
-            $request->all(),[
+            $request->all(),
+            [
                 'phone' => 'required'
             ]
         );
@@ -67,22 +83,21 @@ class AdminAPIController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'ok' => false,
-                'msg' => 'Failed to update phone number.' .join(" ", $validator->errors()->all())
+                'msg' => 'Failed to update phone number.' . join(" ", $validator->errors()->all())
             ]);
         }
 
         try {
             DB::table('staff')->where('employee_id', $request->employee_id)
-            ->where('deleted',0)
-            ->update(['phone' => $request->phone]);
+                ->where('deleted', 0)
+                ->update(['phone' => $request->phone]);
 
             return response()->json([
                 'ok' => true,
                 'msg' => 'Phone number updated successfully'
             ]);
-        } 
-        catch (Exception $e) {
-            Log::error("Failed updating phone number: ". $e->getMessage());
+        } catch (Exception $e) {
+            Log::error("Failed updating phone number: " . $e->getMessage());
             return response()->json([
                 'ok' => false,
                 'msg' => 'Updating phone number failed. An internal error occured. If this continues, contact an administrator',
@@ -94,9 +109,10 @@ class AdminAPIController extends Controller
         }
     }
 
-    public function delete_staff($id){
+    public function delete_staff($id)
+    {
         DB::table('staff')->where('employee_id', $id)
-        ->update(['deleted' => 1]);
+            ->update(['deleted' => 1]);
 
         return response()->json([
             'ok' => true,
@@ -104,9 +120,11 @@ class AdminAPIController extends Controller
         ]);
     }
 
-    public function add_announcement(Request $request){
+    public function add_announcement(Request $request)
+    {
         $validator = Validator::make(
-            $request->all(),[
+            $request->all(),
+            [
                 'title' => 'required',
                 'content' => 'required'
             ]
@@ -130,8 +148,7 @@ class AdminAPIController extends Controller
                 'ok' => true,
                 'msg' => 'Adding notice successful'
             ]);
-        } 
-        catch (Exception $e) {
+        } catch (Exception $e) {
             Log::error("Adding notice failed: " . $e->getMessage());
             return response()->json([
                 'ok' => false,
@@ -140,13 +157,15 @@ class AdminAPIController extends Controller
                     'msg' => "Could not add staff. {$e->getMessage()}",
                     'fix' => "Check errors for clues"
                 ]
-                ]);
+            ]);
         }
     }
 
-    public function edit_announcement(Request $request){
+    public function edit_announcement(Request $request)
+    {
         $validator = Validator::make(
-            $request->all(),[
+            $request->all(),
+            [
                 'title' => 'string',
                 'content' => 'required|string'
             ]
@@ -161,11 +180,11 @@ class AdminAPIController extends Controller
 
         try {
             DB::table('announcement')->where('id', $request->id)
-            ->where('deleted', 0)
-            ->update([
-                'title' => $request->title,
-                'content' => $request->content
-            ]);
+                ->where('deleted', 0)
+                ->update([
+                    'title' => $request->title,
+                    'content' => $request->content
+                ]);
 
             return response()->json([
                 'ok' => true,
@@ -184,13 +203,77 @@ class AdminAPIController extends Controller
         }
     }
 
-    public function delete_announcement($id){
+    public function delete_announcement($id)
+    {
         DB::table('announcement')->where('id', $id)
-        ->update(['deleted' => 1]);
+            ->update(['deleted' => 1]);
 
         return response()->json([
             'ok' => true,
             'msg' => 'Announcement deleted successfully'
+        ]);
+    }
+
+    public function approve_leaveRequest($id)
+    {
+        DB::table('leave_management')->where('id', $id)
+            ->update(['status' => 'approved']);
+
+        return response()->json([
+            'ok' => true,
+            'msg' => 'Leave request approved successfully'
+        ]);
+    }
+
+    public function reject_leaveRequest($id)
+    {
+        DB::table('leave_management')->where('id', $id)
+            ->update(['status' => 'rejected']);
+
+        return response()->json([
+            'ok' => true,
+            'msg' => 'Leave request approved successfully'
+        ]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string',
+            'new_password' => ['required', 'string', 'confirmed', Password::defaults()],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'ok' => false,
+                'msg' => 'Failed to update password: ' . implode(" ", $validator->errors()->all())
+            ]);
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'ok' => false,
+                'msg' => 'Failed to update password. User not found'
+            ]);
+        }
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json([
+                'ok' => false,
+                'msg' => 'Failed to update password. Current password is incorrect'
+            ]);
+        }
+
+        // Update the user's password
+        $user->password = Hash::make($request->new_password);
+        $user->save(); 
+
+        return response()->json([
+            'ok' => true,
+            'msg' => 'Password updated successfully'
         ]);
     }
 }

@@ -26,17 +26,25 @@ class StaffController extends Controller
     }
 
     public function staff_leave(){
-        $leaves = DB::table('leave_management')->select('*', 'users.staff_id')
-        ->join('users', 'leave_management.staff_id', 'users.staff_id')
-        ->where('users.staff_id', Auth::user()->staff_id)
+        $leaves = DB::table('leave_management')
+        // ->select('*', 'users.staff_id')
+        // ->join('users', 'leave_management.staff_id', 'users.staff_id')
+        ->where('staff_id', Auth::user()->staff_id)
         ->where('leave_management.deleted', 0)
         ->get();
 
         $totalLeaveCounts = DB::table('leave_management')
         ->where('staff_id', Auth::user()->staff_id)
+        ->where('status', 'pending')
         ->where('deleted', 0)
         ->count();
-        return view('user_dash.leave', ['leaves' => $leaves, 'totalLeaveCounts' => $totalLeaveCounts]);
+
+        $approvedLeaveCounts= DB::table('leave_management')
+        ->where('staff_id', Auth::user()->staff_id)
+        ->where('status', 'approved')
+        ->where('deleted', 0)
+        ->count();
+        return view('user_dash.leave', ['leaves' => $leaves, 'totalLeaveCounts' => $totalLeaveCounts, 'approved' => $approvedLeaveCounts]);
     }
 
     public function staff_announcement(){
